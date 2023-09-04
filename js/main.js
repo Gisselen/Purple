@@ -1,45 +1,47 @@
 import navComponente from "./nav.js"
 import Banner from "./banner.js"
 
-
 let Menus = ["Home","Produtos","Contato"]
 let nav = new navComponente();
 
-nav.CriarNovoMenu("barra_01", Menus)
+nav.CriarNovoMenu("barra_01",Menus)
 nav.CriarBarraNavUsuario("barra_01","Home")
 
-let B = new Banner();
-let BannerInfo = ["<h1>Compra Rápida</h1> <br> <h3>Compre isso mais rápido....</h3>","<h1>Compre Roupas da moda</h1> <br> <h3>Moda</h3>","<h1>Oferta</h1>"]
+let B =new Banner();
+let BannerInfo = ["<h1>Compra rapida</h1> <br/> <h3> Compre roupas mais rapido... </h3>","<h1>Roupas da moda</h1> <br/> <h3> Moda </h3>","<h1> Oferta relampago </h1>"]
 B.CriarBanner("banner_1")
-B.ModificaBanner("banner_1",BannerInfo,0)
+B.ModificaBanner("banner_1",BannerInfo,2)
 
 let BannerIndex = 0
-setInterval(() => {
+setInterval(()=>{
+    //Corpo dela SetInterva
     if(BannerIndex >= 2){
         BannerIndex = 0
     }
     B.ModificaBanner("banner_1",BannerInfo,BannerIndex)
-    BannerIndex +=1
-},3000)
+    BannerIndex+=1
+},9000)
 
-
-//buttons
 document.getElementById("btBannerProximo").addEventListener("click",()=>{
+    //Corpo do addEventListener
+    //O que acontece se for pressionado 
     if(BannerIndex >= 2){
         BannerIndex = 0
     }
     else{
-        BannerIndex +=1
+        BannerIndex+=1
     }
-    B.ModificaBanner("banner_01",BannerInfo,BannerIndex)
+    B.ModificaBanner("banner_1",BannerInfo,BannerIndex)
 })
 
 document.getElementById("btBannerAnterior").addEventListener("click",()=>{
-    if(BannerIndex <= 0){
+    //Corpo do addEventListener
+    //O que acontece se for pressionado 
+    if(BannerIndex<=0){
         BannerIndex = 2
     }
     else{
-        BannerIndex <=1
+        BannerIndex-=1
     }
-    B.ModificaBanner("banner_01",BannerInfo,BannerIndex)
+    B.ModificaBanner("banner_1",BannerInfo,BannerIndex)
 })
